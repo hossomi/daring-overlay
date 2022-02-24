@@ -1,0 +1,181 @@
+body {
+    display: flex;
+    flex-direction: row-reverse;
+    background: lightgray;
+}
+
+:root {
+    --primary-main: #000080;
+    --primary-dark: #000040;
+    --primary-light: #8080FF;
+    --secondary-main: #FF7000;
+    --secondary-light: #FFA000;
+}
+
+@keyframes fade-in {
+    from { opacity: 0%; }
+    to { opacity: 100%; }
+}
+
+@keyframes hopen {
+    from { width: var(--hopen-from); }
+    to { width: var(--hopen-to); }
+}
+
+@keyframes vopen {
+    from { height: var(--vopen-from); }
+    to { height: var(--vopen-to); }
+}
+
+* {
+    font-family: 'Cairo', sans-serif;
+    color: white;
+    font-size: 14px;
+
+    overflow: hidden;
+    margin: 0;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 100%;
+    padding: 10px;
+}
+
+.box-container {
+    height: fit-content;
+    margin-bottom: 10px;
+
+    border: solid 5px var(--secondary-main);
+
+    /* animation-name: fade-in;
+    animation-duration: 0.5s; */
+}
+
+.box-content {
+    background: black;
+    padding: 5px;
+
+    border-top: solid 1px var(--secondary-main);
+
+    /* animation-name: vopen; */
+    animation-duration: 1s;
+    /* animation-delay: 0.3s; */
+    animation-fill-mode: forwards;
+    --vopen-from: 0px;
+    --vopen-to: 50px;
+}
+
+.box-content p {
+    display: flex;
+    padding: 0 5px;
+
+    font-family: 'Cairo', sans-serif;
+    color: white;
+    font-size: 18pt;
+    line-height: 30px;
+}
+
+.box-content p.now {
+    background: var(--secondary-light);
+    color: black;
+}
+
+.box-content p.separator {
+    padding: 0;
+    color: var(--secondary-light);
+    font-size: 10pt;
+}
+
+.box-content p.separator:before, .box-content p.separator:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    margin: auto 10px;
+    border-top: solid 1px var(--secondary-light);
+}
+
+.box-content p span {
+    width: 50px;
+    margin-left: auto;
+
+    text-align: center;
+}
+
+.chat-box {
+    height: 400px;
+}
+
+.header-container {
+    width: 100%;
+    height: 40px;
+    background: var(--primary-main);
+
+    overflow: hidden;
+}
+
+.header-content {
+    height: 100%;
+    width: min-content;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+}
+
+.header-content h1 {
+    height: 40px;
+    margin: auto;
+    overflow: hidden;
+
+    background: var(--primary-dark);
+    color: white;
+    font-size: 22pt;
+    line-height: 40px;
+    text-align: center;
+
+    animation-name: hopen;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    --hopen-from: 25px;
+    --hopen-to: 310px;
+}
+
+.arrow-outer {
+    width: min-content;
+    height: min-content;
+    border: none 10px var(--primary-light);
+    border-top-style: solid;
+    border-right-style: solid;
+}
+
+.arrow-middle {
+    width: min-content;
+    height: min-content;
+    border: none 10px var(--primary-main);
+    border-top-style: solid;
+    border-right-style: solid;
+}
+
+.arrow-inner {
+    width: 40px;
+    height: 40px;
+    border: none 10px var(--secondary-main);
+    border-top-style: solid;
+    border-right-style: solid;
+}
+
+.arrow-left {
+    transform: translate(0, -10px) rotate(45deg);
+    transform-origin: center;
+    margin: 0 -15px;
+}
+
+.arrow-right {
+    transform: translate(0, -20px) rotate(-135deg);
+    transform-origin: center;
+    margin: 0 -15px;
+}
