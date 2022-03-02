@@ -1,0 +1,22 @@
+{
+    "today1": {
+        "type": "text",
+        "label": "Today NOW!"
+    },
+    "today2": {
+        "type": "text",
+        "label": "Today 21h"
+    },
+    "nextDay": {
+        "type": "text",
+        "label": "Next day"
+    },
+    "tomorrow1": {
+        "type": "text",
+        "label": "Next day 19h"
+    },
+    "tomorrow2": {
+        "type": "text",
+        "label": "Next day 21h"
+    }
+}

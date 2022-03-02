@@ -1,4 +1,9 @@
+<!-- LOCAL ONLY - Do not copy to StreamElements widget -->
 <link href="widget.css" rel="stylesheet">
+<script src="widget.js"></script>
+<script src="https://cdn.streamelements.com/scripts/jquery_3.3.1.min.js"></script>
+
+<!-- WIDGET - Copy to StreamElements widget from here -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400" rel="stylesheet">
 
 <div id="main-container">
@@ -19,7 +24,8 @@
             </div>
         </div>
 
-        <div class="chat-box"></div>
+        <div class="box-content chat">
+        </div>
     </div>
 
     <div class="box-container">
@@ -30,7 +36,7 @@
                         <div class="arrow-inner"></div>
                     </div>
                 </div>
-                <h1>Agenda</h1>
+                <h1 style="animation-delay: 0.2s">Agenda</h1>
                 <div class="arrow-outer arrow-right">
                     <div class="arrow-middle">
                         <div class="arrow-inner"></div>
@@ -39,12 +45,7 @@
             </div>
         </div>
 
-        <div class="box-content">
-            <p class="now">Age of Empires II<span>Agora!</span></p>
-            <p>League of Legends<span>21h</span></p>
-            <p class="separator">Amanhã</p>
-            <p>CS:GO<span>19h</span></p>
-            <p>Board Games<span>21h</span></p>
+        <div id="agenda" class="box-content">
         </div>
     </div>
 </div>

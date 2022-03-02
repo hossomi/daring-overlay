@@ -1,20 +1,26 @@
+/* LOCAL ONLY - Do not copy to StreamElements widget */
 body {
     display: flex;
     flex-direction: row-reverse;
     background: lightgray;
 }
 
+/* WIDGET - Copy to StreamElements widget from here */
 :root {
     --primary-main: #252d65;
-    --primary-dark: #19204e;
+    --primary-dark: #13183b;
     --primary-light: #a3c9eb;
     --secondary-main: #f3931b;
     --secondary-light: #FFA000;
+    --background-main: #101010;
     --main-width: 400px;
     --main-border-width: 5px;
+    --arrow-border-width: 10px;
     --chat-height: 300px;
     --header-height: 40px;
     --box-item-height: 30px;
+    --spacing-1: 5px;
+    --spacing-2: 10px;
 }
 
 @keyframes fade-in {
@@ -46,33 +52,32 @@ body {
     flex-direction: column;
     width: var(--main-width);
     height: 100%;
-    padding: 10px;
+    padding: var(--spacing-2);
 }
 
 .box-container {
     height: fit-content;
-    margin-bottom: 10px;
+    margin-bottom: var(--spacing-2);
 
     border: solid var(--main-border-width) var(--secondary-main);
 }
 
 .box-content {
-    background: black;
-    padding: 5px;
+    background: var(--background-main);
+    padding: var(--spacing-2) var(--spacing-1);
 
     border-top: solid 1px var(--secondary-main);
+}
 
-    /* animation-name: vopen; 
-    animation-duration: 1s;
-    animation-delay: 0.3s;
-    animation-fill-mode: forwards;
-    --vopen-from: 0px;
-    --vopen-to: 50px; */
+.box-content.chat {
+    height: var(--chat-height);
+  	padding: 0;
+    background: transparent;
 }
 
 .box-content p {
     display: flex;
-    padding: 0 5px;
+    padding: 0 var(--spacing-1);
 
     font-family: 'Cairo', sans-serif;
     color: white;
@@ -80,10 +85,8 @@ body {
     line-height: var(--box-item-height);
 }
 
-.box-content p.now {
-    background: var(--secondary-light);
-    color: black;
-    border-radius: calc(var(--box-item-height) / 4)
+.box-content p:not(:last-child) {
+    margin-bottom: var(--spacing-1);
 }
 
 .box-content p span {
@@ -91,7 +94,13 @@ body {
     text-align: center;
 }
 
-.box-content p.now span {
+.box-content p.highlight {
+    background: var(--secondary-light);
+    color: black;
+    border-radius: calc(var(--box-item-height) / 4)
+}
+
+.box-content p.highlight span {
     color: black;
 }
 
@@ -101,6 +110,7 @@ body {
     color: var(--secondary-light);
     font-size: 10pt;
     line-height: calc(var(--box-item-height) / 2);
+    white-space: nowrap;
 }
 
 .box-content p.separator:before, .box-content p.separator:after {
@@ -108,12 +118,8 @@ body {
     display: inline-block;
     width: 100%;
     height: 0;
-    margin: auto 10px;
+    margin: auto var(--spacing-2);
     border-top: solid 1px var(--secondary-light);
-}
-
-.chat-box {
-    height: var(--chat-height);
 }
 
 .header-container {
@@ -144,45 +150,47 @@ body {
     line-height: var(--header-height);
     text-align: center;
 
-    animation-name: hopen;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    --hopen-from: 25px;
+    animation-name: hopen, fade-in;
+    animation-duration: 0.8s, 0.5s;
+    animation-fill-mode: both, both;
+    animation-timing-function: cubic-bezier(0, 0, 0.25, 1.0);
+    --hopen-from: var(--header-height);
     --hopen-to: calc(var(--main-width) - 2 * var(--main-border-width) - 2 * var(--header-height));
 }
 
 .arrow-outer {
     width: min-content;
     height: min-content;
-    border: none 10px var(--primary-light);
+    border: none var(--arrow-border-width) var(--primary-light);
     border-top-style: solid;
     border-right-style: solid;
+    z-index: 1;
 }
 
 .arrow-middle {
     width: min-content;
     height: min-content;
-    border: none 10px var(--primary-main);
+    border: none var(--arrow-border-width) var(--primary-main);
     border-top-style: solid;
     border-right-style: solid;
 }
 
 .arrow-inner {
-    width: 40px;
-    height: 40px;
-    border: none 10px var(--secondary-main);
+    width: var(--header-height);
+    height: var(--header-height);
+    border: none var(--arrow-border-width) var(--secondary-main);
     border-top-style: solid;
     border-right-style: solid;
 }
 
 .arrow-left {
-    transform: translate(0, -10px) rotate(45deg);
+    transform: translate(0, calc(-1 * var(--arrow-border-width))) rotate(45deg);
     transform-origin: center;
     margin: 0 -15px;
 }
 
 .arrow-right {
-    transform: translate(0, -20px) rotate(-135deg);
+    transform: translate(0, calc(-2 * var(--arrow-border-width))) rotate(-135deg);
     transform-origin: center;
     margin: 0 -15px;
 }
